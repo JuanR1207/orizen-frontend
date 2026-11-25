@@ -1,0 +1,28 @@
+# .github/workflows/build.yml
+# Compila el frontend en cada push y en cada PR hacia develop o main.
+name: Build
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar
+        run: npm run build
+        env:
+          VITE_API_URL: http://localhost:8000
