@@ -1,0 +1,97 @@
+/* src/styles.css - estilos compartidos de todas las pantallas */
+:root {
+  --fondo: #f6f3ef;
+  --superficie: #ffffff;
+  --texto: #1f1b16;
+  --muted: #6f665c;
+  --borde: #e6dfd6;
+  --marca: #e8590c;
+  --marca-oscura: #c2410c;
+  --ok: #2f9e44;
+  --peligro: #d6336c;
+  --radio: 12px;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2, h3 { margin: 0 0 12px; }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.05rem; }
+.muted { color: var(--muted); }
+.error { color: var(--peligro); font-weight: 600; margin: 8px 0; }
+.marca { color: var(--marca); font-weight: 800; letter-spacing: 0.08em; }
+
+/* ---------- Barra superior ---------- */
+.topbar {
+  display: flex; align-items: center; gap: 24px;
+  padding: 12px 24px; background: #1f1b16; color: #fff;
+  position: sticky; top: 0; z-index: 10;
+}
+.topbar nav { display: flex; gap: 6px; flex: 1; }
+.topbar nav a {
+  color: #d8d0c6; text-decoration: none; padding: 6px 12px; border-radius: 8px; font-weight: 600;
+}
+.topbar nav a.active, .topbar nav a:hover { background: #3a332b; color: #fff; }
+.topbar .usuario { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
+.contenido { padding: 24px; max-width: 1280px; margin: 0 auto; }
+
+/* ---------- Tarjetas, grillas y formularios ---------- */
+.card {
+  background: var(--superficie); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 16px;
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+.fila { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.entre { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.pila { display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+input, select, textarea {
+  font: inherit; color: var(--texto); padding: 8px 10px;
+  border: 1px solid var(--borde); border-radius: 8px; background: #fff;
+}
+input:focus, select:focus { outline: 2px solid var(--marca); outline-offset: -1px; }
+
+/* ---------- Botones ---------- */
+.btn {
+  font: inherit; font-weight: 700; cursor: pointer; border: 1px solid var(--borde);
+  border-radius: 8px; padding: 8px 14px; background: #fff; color: var(--texto);
+}
+.btn:hover { background: #f1ece6; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--marca); border-color: var(--marca); color: #fff; }
+.btn-primary:hover { background: var(--marca-oscura); }
+.btn-ok { background: var(--ok); border-color: var(--ok); color: #fff; }
+.btn-ok:hover { background: #2b8a3e; }
+.btn-peligro { color: var(--peligro); border-color: #f3c0d2; }
+.btn-ghost { background: transparent; color: inherit; border-color: #5a5047; }
+.btn-ghost:hover { background: #3a332b; }
+.btn-sm { padding: 4px 10px; font-size: 0.85rem; }
+
+/* ---------- Tablas ---------- */
+.tabla { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.tabla th { text-align: left; color: var(--muted); font-weight: 600; padding: 8px; border-bottom: 1px solid var(--borde); }
+.tabla td { padding: 8px; border-bottom: 1px solid var(--borde); vertical-align: middle; }
+
+/* ---------- Estados del pedido ---------- */
+.badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; }
+.estado-EN_COLA { background: #fff3bf; color: #8a6100; }
+.estado-EN_PREPARACION { background: #ffe8cc; color: #b34700; }
+.estado-EMPAQUETADO { background: #d0ebff; color: #1864ab; }
+.estado-EN_TRANSITO { background: #e5dbff; color: #5f3dc4; }
+.estado-ENTREGADO { background: #d3f9d8; color: #2b8a3e; }
+.estado-CANCELADO { background: #f1f3f5; color: #868e96; text-decoration: line-through; }
+
+/* ---------- Login ---------- */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.login-card { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 14px; }
+.login-card h1 { font-size: 2rem; margin: 0; }
+.login-card p { margin: 0; }
+
+/* ---------- Pantallas en construcción ---------- */
+.pendiente { text-align: center; padding: 48px 16px; }
